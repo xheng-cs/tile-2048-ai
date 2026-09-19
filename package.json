@@ -5,8 +5,6 @@
   "description": "2048 网页小游戏 + AI 托管版：零依赖、打开即玩、核心逻辑可单元测试",
   "scripts": {
     "test": "node --test",
-    "bench": "node tools/bench.js",
-    "smoke": "bash tools/browser-smoke.sh",
     "start": "python3 -m http.server 8080"
   },
   "keywords": ["2048", "game", "vanilla-js", "ai", "expectimax"],
