@@ -1,0 +1,12 @@
+{
+  "name": "tile-2048-ai",
+  "version": "1.1.0",
+  "private": true,
+  "description": "2048 网页小游戏 + AI 托管版：零依赖、打开即玩、核心逻辑可单元测试",
+  "scripts": {
+    "test": "node --test",
+    "start": "python3 -m http.server 8080"
+  },
+  "keywords": ["2048", "game", "vanilla-js", "ai", "expectimax"],
+  "license": "MIT"
+}
