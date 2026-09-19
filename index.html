@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="description" content="2048 网页小游戏 · AI 托管版：零依赖、打开即玩">
+<title>2048 · AI 托管版</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main class="app">
+  <header class="head">
+    <h1 class="title">2048<span class="title-sub">AI 托管版</span></h1>
+    <div class="scores">
+      <div class="score-box">
+        <span class="score-label">分数</span>
+        <strong class="score-value" id="score">0</strong>
+      </div>
+      <div class="score-box">
+        <span class="score-label">最高分</span>
+        <strong class="score-value" id="best">0</strong>
+      </div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <button id="new-game" class="btn btn-primary" type="button">新游戏</button>
+  </div>
+
+  <div class="board" id="board">
+    <div class="grid-bg" id="grid"></div>
+    <div class="tile-layer" id="tiles"></div>
+    <div class="overlay hidden" id="overlay">
+      <h2 class="overlay-title" id="overlay-title"></h2>
+      <p class="overlay-text" id="overlay-text"></p>
+      <button id="overlay-btn" class="btn btn-primary" type="button"></button>
+    </div>
+  </div>
+
+  <p class="hint">方向键 / WASD 操作 · 相同数字相撞即合并</p>
+</main>
+
+<script src="js/board.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
