@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="description" content="2048 网页小游戏 · AI 托管版：零依赖、打开即玩">
+<meta name="description" content="2048 网页小游戏 · AI 托管版：零依赖、打开即玩，AI 由 Expectimax 搜索驱动">
 <title>2048 · AI 托管版</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -12,7 +12,7 @@
   <header class="head">
     <h1 class="title">2048<span class="title-sub">AI 托管版</span></h1>
     <div class="scores">
-      <div class="score-box">
+      <div class="score-box" id="score-box">
         <span class="score-label">分数</span>
         <strong class="score-value" id="score">0</strong>
       </div>
@@ -25,11 +25,20 @@
 
   <div class="toolbar">
     <button id="new-game" class="btn btn-primary" type="button">新游戏</button>
+    <button id="undo" class="btn" type="button" title="快捷键 Z">撤销</button>
+    <button id="hint" class="btn" type="button" title="快捷键 H">提示</button>
+    <button id="autoplay" class="btn" type="button">AI 托管</button>
+    <select id="speed" class="select" title="AI 托管速度">
+      <option value="320">AI 慢速</option>
+      <option value="140" selected>AI 常速</option>
+      <option value="45">AI 快速</option>
+    </select>
   </div>
 
   <div class="board" id="board">
     <div class="grid-bg" id="grid"></div>
     <div class="tile-layer" id="tiles"></div>
+    <div class="hint-badge hidden" id="hint-badge"></div>
     <div class="overlay hidden" id="overlay">
       <h2 class="overlay-title" id="overlay-title"></h2>
       <p class="overlay-text" id="overlay-text"></p>
@@ -37,10 +46,14 @@
     </div>
   </div>
 
-  <p class="hint">方向键 / WASD 操作 · 相同数字相撞即合并</p>
+  <p class="hint">
+    方向键 / WASD 移动 · 手机可直接滑动 · <kbd>Z</kbd> 撤销 · <kbd>H</kbd> 提示<br>
+    点「AI 托管」让 Expectimax 搜索替你玩，可调速度
+  </p>
 </main>
 
 <script src="js/board.js"></script>
+<script src="js/ai.js"></script>
 <script src="js/game.js"></script>
 </body>
 </html>

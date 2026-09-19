@@ -189,10 +189,108 @@ body {
 .overlay-title { margin: 0; font-size: 24px; }
 .overlay-text { margin: 0; color: var(--muted); font-size: 14px; }
 
+/* ============================================================
+   v1.1 迭代新增：AI 控制条、动画、提示气泡
+   ============================================================ */
+
+/* 下拉选择（AI 速度） */
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.select:hover { background: #262b36; border-color: #39404e; }
+
+/* 按钮禁用态与激活态 */
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn:disabled:hover { background: var(--panel-2); border-color: var(--line); }
+
+.btn.active {
+  background: linear-gradient(135deg, #3ddc97, #22a06b);
+  border-color: #3ddc97;
+  color: #0d1a14;
+}
+
+/* 分数浮动提示 */
+.score-box { position: relative; overflow: visible; }
+
+.score-float {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #3ddc97;
+  pointer-events: none;
+  animation: float-up .7s ease-out forwards;
+}
+
+@keyframes float-up {
+  from { opacity: 1; transform: translateY(2px); }
+  to   { opacity: 0; transform: translateY(-22px); }
+}
+
+/* 新方块出现 / 合并弹跳 */
+@keyframes tile-appear {
+  from { transform: scale(.25); opacity: .3; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+@keyframes tile-merge {
+  0%   { transform: scale(1); }
+  45%  { transform: scale(1.16); }
+  100% { transform: scale(1); }
+}
+
+.tile-new { animation: tile-appear .16s ease-out; }
+.tile-merged { animation: tile-merge .2s ease-out; }
+
+/* 棋盘上的 AI 建议气泡 */
+.hint-badge {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  z-index: 4;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(61, 220, 151, .16);
+  border: 1px solid rgba(61, 220, 151, .5);
+  color: #7ff0bd;
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  animation: tile-appear .16s ease-out;
+}
+
+.hint-badge.hidden { display: none; }
+
 /* ---------- 底部提示 ---------- */
 .hint {
   margin: 12px 0 0;
   text-align: center;
   font-size: 12.5px;
+  line-height: 1.9;
   color: var(--muted);
+}
+
+.hint kbd {
+  display: inline-block;
+  padding: 1px 5px;
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  background: var(--panel-2);
+  color: var(--text);
+  font-size: 11px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
